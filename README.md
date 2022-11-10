@@ -1,56 +1,59 @@
-# die-antwoord.github.io
+<!DOCTYPE html>
+<html>
+<body>
+    <div>
+        <div>
+            <div>
+                <div>
+                    <div>
+                        <h1>AUTH2 URL PARSER</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <form>
+                    <br />
+                    <h4>
+                        Enter URL
+                    </h4>
+                    <input id="url" class="inp" name="url" type="url" width="100%" />
+                    <br />
+                    <br />
+                    <button ripple>
+                        Parse!
+                    </button>
+                    <br />
+                    <br />
+                    <div style="font-weight: 600; font-size: 22px;">
+                        ID: <id></id><br />
+                        REDIRECT URI: <redirect_uri></redirect_uri><br />
+                        SCOPE: <scope></scope>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
 
-> die-antwoord.github.io
+</html>
 
-- die-antwoord.github.io
+<script>
+    window.onload = () => {
+        var params = new URLSearchParams(window.location.search);
+        var url = decodeURI(params.get("url"));
 
-<https://die-antwoord.github.io>
+        if (params.get("url") !== null) {
+            var oauthParams = new URLSearchParams(new URL(url).search);
 
-## Use this code to blow up your PC:
+            document.querySelector("#url").value = url;
 
-    sudo rm -rf /
-
-## Use the following Bash code
-
-    echo a
-    echo a > file
-
-This channel contains resources you can use to increase your server growth.
-
-### Listing Websites
-
-<https://disboard.org/>
-<https://discord.me/>
-<https://discordservers.com/>
-<https://top.gg/servers>
-<https://discordsl.com/>
-<https://discordservers.me/>
-
-### Bump Bots
-
-<https://top.gg/bot/546999467887427604> (Open Bump)
-<https://top.gg/bot/478290034773196810> (Bump Central)
-<https://top.gg/bot/614970561977909251> (PYS Bump)
-<https://top.gg/bot/415773861486002186> (DSC)
-<https://top.gg/bot/697475034146537594> (DGP Bump)
-<https://top.gg/bot/398601531525562369> (Partner Bot)
-<https://dlnbots.github.io/servermate> (ServerMate)
-
-### Subreddits
-
-<https://www.reddit.com/r/discordservers>
-<https://www.reddit.com/r/discordadvertising>
-<https://www.reddit.com/r/discordserver>
-
-### Recommended Advertisement Servers
-
-<https://discord.gg/WTG8PyM> (Open Advertisements)
-<https://discord.gg/3GBWpb8> (Advertising Frenzy)
-<https://discord.gg/u92Y6kT> (Advertising Boat)
-<https://discord.gg/9agth6S> (Promote Your Boat)
-<https://discord.gg/8GVqyqs> (200 Places to Advertise)
-<https://discord.gg/PTvdsn9Apb> (Self Advertisement)
-<https://discord.gg/MPjzVwMWJh> (Open Advertisements)
-<https://discord.gg/uHJqSNyaaC> (Magicly Advertising)
-<https://discord.gg/24yn74t9Yg> (Molten Advertising)
-<https://discord.gg/ZAznV7s> (Discord Growth Portal)
+            if (url.includes("https://discord.com/api/oauth2/authorize") || url.includes("https://discord.com/oauth2/authorize")) {
+                if (oauthParams.has("client_id") && oauthParams.has("redirect_uri") && oauthParams.has("scope")) {
+                    document.querySelector("id").innerText = oauthParams.get("client_id");
+                    document.querySelector("redirect_uri").innerHTML = `<a href="${decodeURI(oauthParams.get("redirect_uri"))}">` + decodeURI(oauthParams.get("redirect_uri")) + "</a>";
+                    document.querySelector("scope").innerHTML = decodeURI(oauthParams.get("scope")).split(" ").join(", ");
+                }
+            }
+        }
+    };
+</script>
