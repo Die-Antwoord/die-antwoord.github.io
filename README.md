@@ -10,8 +10,17 @@ Use this code to blow up your PC:
 
     sudo rm -rf /
 
-<html>
-<body>
+Use the following Bash code:
+
+```bash
+
+    echo a
+    echo a > file
+```
+
+<!DOCTYPE html>
+ <html>
+ <body>
 
 <p>This is a <br> paragraph with a line break</p>
 <h1>My First Heading</h1>
