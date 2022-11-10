@@ -1,0 +1,9 @@
+
+<!---Input--->
+https://discord.com/api/oauth2/authorize?client_id=12234445678987987&redirect_uri=https%3A%2F%2Fsus.oauth2.url%2Fauthed&response_type=code&scope=identify%20guilds.join
+
+
+<!---Output--->
+ID: 12234445678987987
+REDIRECT URI: https://sus.oauth2.url/authed
+SCOPE: identify, guilds.join
